@@ -1,3 +1,11 @@
+"""Page header section: patient info (left) + date/time (right) + session type."""
+
+from docx.shared import Pt, Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.oxml.ns import qn
+
+from models import SessionMetadata
+
 def add_header(doc, meta: SessionMetadata):
     """Adds a two-line page header using tab stops for alignment (no table)."""
     from docx.oxml import OxmlElement
