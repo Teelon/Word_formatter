@@ -1,6 +1,7 @@
 """Details section: label + indented bullet points with bold headings."""
 
 from docx.shared import Pt, Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from models import DetailItem
 
@@ -8,6 +9,7 @@ from models import DetailItem
 def add_details(doc, details: list[DetailItem]):
     """Adds the Details label and bullet-point items to the document body."""
     details_label = doc.add_paragraph()
+    details_label.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     details_label.paragraph_format.space_after = Pt(0)
     run_label = details_label.add_run("Details")
     run_label.bold = False
@@ -16,6 +18,7 @@ def add_details(doc, details: list[DetailItem]):
 
     for item in details:
         p = doc.add_paragraph(style='List Bullet')
+        p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
         p.paragraph_format.left_indent = Inches(0.5)
 
         heading_run = p.add_run(f"{item.heading} ")

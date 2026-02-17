@@ -1,4 +1,4 @@
-"""Typed data models for therapy session note extraction."""
+"""Typed data models for clinical session note extraction."""
 
 from pydantic import BaseModel, Field
 from typing import Optional
@@ -23,8 +23,8 @@ class SessionMetadata(BaseModel):
         description="Session time (e.g., 10:00am)"
     )
     session_type: str = Field(
-        default="Therapy Session (Virtual)",
-        description="Type and modality (e.g., Therapy Session (Virtual))"
+        ...,
+        description="Type of session as stated in the notes (e.g., Structured Background History Interview, Therapy Session (Virtual))"
     )
 
 
@@ -41,7 +41,7 @@ class DetailItem(BaseModel):
 
 
 class SessionReport(BaseModel):
-    """Complete structured output from the LLM for a therapy session."""
+    """Complete structured output from the LLM for a clinical session."""
     metadata: SessionMetadata
     summary: str = Field(
         ...,

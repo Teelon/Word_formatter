@@ -16,7 +16,7 @@ client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
 CLINICIAN_NAME = "Gabrielle"  # Change this for a different clinician
 
 # ── Build the system prompt dynamically from the Pydantic model ──────────
-EXTRACTION_RULES = f"""You are a Data Extraction Specialist. Your task is to extract information from therapy session notes and return a single, valid JSON object.
+EXTRACTION_RULES = f"""You are a Data Extraction Specialist. Your task is to extract information from clinical session notes and return a single, valid JSON object.
 
 ### EXTRACTION RULES:
 1. CITATION REMOVAL: Remove all "" tags from every string.
@@ -133,7 +133,7 @@ def create_word_doc(report: SessionReport):
     display_name = f"{name_parts[0].upper()},{name_parts[1]}" if len(name_parts) == 2 else meta.patient_name.upper()
 
     filename = (
-        f"{display_name} ({meta.session_type} "
+        f"{display_name} ({meta.session_type.replace('(', '').replace(')', '')})_"
         f"{meta.session_date} - {date_slug} {time_slug} EST - Notes by Gemini.docx"
     )
     doc.save(filename)
