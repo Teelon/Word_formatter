@@ -126,27 +126,38 @@ def create_word_doc(report: SessionReport):
 
     meta: SessionMetadata = report.metadata
 
-    # Build each section
+    try:
+        from dateutil import parser as dateparser
+        import sys
+        
+        # Clean timezone abbreviations (common ones) to avoid parser errors
+        time_str = meta.session_time
+        for tz in ["EST", "EDT", "CST", "CDT", "PST", "PDT"]:
+            time_str = time_str.replace(f" {tz}", "").replace(tz, "")
+        time_str = time_str.strip()
+
+        # Parse and re-format to "04:47 PM"
+        dt_time = dateparser.parse(time_str)
+        meta.session_time = dt_time.strftime("%I:%M %p")
+        
+        # Parse date for filename
+        dt_date = dateparser.parse(meta.session_date)
+        date_slug = dt_date.strftime("%Y_%m_%d")
+        time_slug = dt_time.strftime("%I_%M_%p")
+    except Exception as e:
+        print(f"DEBUG: Exception formatting time ('{meta.session_time}'): {e}", flush=True)
+        # Fallback if parsing fails
+        date_slug = meta.session_date.replace(" ", "_").replace(",", "")
+        time_slug = meta.session_time.replace(":", "_").replace(" ", "") + "_ERROR"
+
+    # Build each section (Header will now use the 12-hour meta.session_time)
     add_header(doc, meta)
     add_summary(doc, report.summary)
     add_details(doc, report.details)
     add_next_steps(doc, report.next_steps)
     add_footer(doc)
 
-    # ── Build filename from metadata ────────────────────────────────────
-    try:
-        from dateutil import parser as dateparser
-        print(f"DEBUG: meta.session_time = '{meta.session_time}'")
-        dt_date = dateparser.parse(meta.session_date)
-        dt_time = dateparser.parse(meta.session_time)
-        print(f"DEBUG: parsed dt_time = {dt_time}")
-        date_slug = dt_date.strftime("%Y_%m_%d")
-        time_slug = dt_time.strftime("%I_%M_%p")
-    except Exception as e:
-        print(f"DEBUG: Exception in filename generation: {e}")
-        date_slug = meta.session_date.replace(" ", "_").replace(",", "")
-        time_slug = meta.session_time.replace(":", "_")
-
+    # ── Build filename ──────────────────────────────────────────────────
     # Force last name to uppercase for filename
     name_parts = meta.patient_name.split(",", 1)
     display_name = f"{name_parts[0].upper()},{name_parts[1]}" if len(name_parts) == 2 else meta.patient_name.upper()
