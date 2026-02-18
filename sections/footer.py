@@ -14,6 +14,7 @@ def add_footer(doc):
     footer_para1.alignment = WD_ALIGN_PARAGRAPH.LEFT
     footer_para1.paragraph_format.space_before = Pt(0)
     footer_para1.paragraph_format.space_after = Pt(0)
+    footer_para1.paragraph_format.line_spacing = 1.0
     f_run1 = footer_para1.add_run("G. Maynard MSc. (Sup. Prac.)")
     f_run1.font.name = 'Times New Roman'
     f_run1.font.size = Pt(9)
@@ -22,6 +23,7 @@ def add_footer(doc):
     footer_para2.alignment = WD_ALIGN_PARAGRAPH.LEFT
     footer_para2.paragraph_format.space_before = Pt(0)
     footer_para2.paragraph_format.space_after = Pt(0)
+    footer_para2.paragraph_format.line_spacing = 1.0
     f_run2 = footer_para2.add_run("G. Townsend, MSc. C. Psych. PsyD")
     f_run2.font.name = 'Times New Roman'
     f_run2.font.size = Pt(9)

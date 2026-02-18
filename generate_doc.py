@@ -5,6 +5,7 @@ from openai import OpenAI
 from pydantic import ValidationError
 from docx import Document
 from docx.shared import Pt
+from docx.enum.text import WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 
 from models import SessionReport, SessionMetadata
 from sections import add_header, add_summary, add_details, add_next_steps, add_footer
@@ -102,11 +103,26 @@ def create_word_doc(report: SessionReport):
     font.name = 'Times New Roman'
     font.size = Pt(9)
 
-    # Default paragraph spacing (single, no extra space)
+    # Default paragraph spacing (1.15 lines, 4pt after)
     pf = style.paragraph_format
     pf.space_before = Pt(0)
-    pf.space_after = Pt(0)
-    pf.line_spacing = 1.0
+    pf.space_after = Pt(4)
+    pf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+    pf.line_spacing = 1.15
+
+    # Configure List Bullet style to match
+    try:
+        lb_style = doc.styles['List Bullet']
+        lb_font = lb_style.font
+        lb_font.name = 'Times New Roman'
+        lb_font.size = Pt(9)
+        lb_pf = lb_style.paragraph_format
+        lb_pf.space_before = Pt(0)
+        lb_pf.space_after = Pt(4)
+        lb_pf.line_spacing_rule = WD_LINE_SPACING.MULTIPLE
+        lb_pf.line_spacing = 1.15
+    except KeyError:
+        pass  # List Bullet might not exist in some base templates, though unlikely
 
     meta: SessionMetadata = report.metadata
 
@@ -120,11 +136,14 @@ def create_word_doc(report: SessionReport):
     # ── Build filename from metadata ────────────────────────────────────
     try:
         from dateutil import parser as dateparser
+        print(f"DEBUG: meta.session_time = '{meta.session_time}'")
         dt_date = dateparser.parse(meta.session_date)
         dt_time = dateparser.parse(meta.session_time)
+        print(f"DEBUG: parsed dt_time = {dt_time}")
         date_slug = dt_date.strftime("%Y_%m_%d")
-        time_slug = dt_time.strftime("%H_%M")
-    except Exception:
+        time_slug = dt_time.strftime("%I_%M_%p")
+    except Exception as e:
+        print(f"DEBUG: Exception in filename generation: {e}")
         date_slug = meta.session_date.replace(" ", "_").replace(",", "")
         time_slug = meta.session_time.replace(":", "_")
 

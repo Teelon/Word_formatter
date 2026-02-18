@@ -1,7 +1,7 @@
 """Page header section: patient info (left) + date/time (right) + session type."""
 
 from docx.shared import Pt, Inches
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml.ns import qn
 
 from models import SessionMetadata
@@ -22,6 +22,7 @@ def add_header(doc, meta: SessionMetadata):
     line1 = header.add_paragraph()
     line1.paragraph_format.space_before = Pt(0)
     line1.paragraph_format.space_after = Pt(0)
+    line1.paragraph_format.line_spacing = 1.0
 
     # Add a right-aligned tab stop at the right margin (6.5 inches)
     _add_right_tab_stop(line1, Inches(6.5))
@@ -40,6 +41,7 @@ def add_header(doc, meta: SessionMetadata):
     line2 = header.add_paragraph()
     line2.paragraph_format.space_before = Pt(0)
     line2.paragraph_format.space_after = Pt(0)
+    line2.paragraph_format.line_spacing = 1.0
     _styled_run(line2, meta.session_type, bold=True)
 
 
