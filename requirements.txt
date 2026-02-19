@@ -1,5 +1,0 @@
-openai
-pydantic
-python-docx
-python-dateutil
-requests

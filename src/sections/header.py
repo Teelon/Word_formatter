@@ -4,7 +4,7 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
 from docx.oxml.ns import qn
 
-from models import SessionMetadata
+from src.models import SessionMetadata
 
 def add_header(doc, meta: SessionMetadata):
     """Adds a two-line page header using tab stops for alignment (no table)."""

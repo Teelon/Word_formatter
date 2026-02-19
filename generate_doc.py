@@ -11,9 +11,9 @@ from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 
-from models import SessionReport, SessionMetadata
-from sections import add_header, add_summary, add_details, add_next_steps, add_footer
-from startup import preflight
+from src.models import SessionReport, SessionMetadata
+from src.sections import add_header, add_summary, add_details, add_next_steps, add_footer
+from src.startup import preflight
 
 # Initialize OpenAI client for LM Studio
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")

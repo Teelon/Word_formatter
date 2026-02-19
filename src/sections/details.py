@@ -4,7 +4,7 @@ from docx.shared import Pt, Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml.ns import qn
 
-from models import DetailItem
+from src.models import DetailItem
 
 
 def _disable_contextual_spacing(paragraph):

@@ -43,10 +43,18 @@ def _check_packages() -> None:
     print(f"⚠ Missing packages: {', '.join(missing)}")
     print("  Installing now …")
 
-    req_path = os.path.join(os.path.dirname(__file__), "requirements.txt")
-    subprocess.check_call(
-        [sys.executable, "-m", "pip", "install", "-r", req_path, "--quiet"]
-    )
+    req_path = os.path.join(os.path.dirname(__file__), "..", "requirements.txt")
+    # check if requirements.txt exists since we moved it/deleted it? 
+    # Actually user deleted requirements.txt. 
+    # So we should probably install by name list.
+    
+    try:
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install"] + missing + ["--quiet"]
+        )
+    except Exception:
+         # Fallback if list install fails
+         pass
 
     # Verify everything imports after install
     still_missing = []
@@ -181,9 +189,6 @@ def _check_lm_studio() -> str:
             
             # Connected but no model
             # Try to load if we haven't already (or keep trying)
-            if attempt == 1 or attempt % 3 == 0:
-                 _ensure_model_loaded(data)
-            
             print(f"⏳ Waiting for model to load... (attempt {attempt}/{MAX_RETRIES})")
             time.sleep(RETRY_DELAY)
             continue
