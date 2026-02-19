@@ -1,6 +1,7 @@
 import os
 import json
 import re
+import time
 from openai import OpenAI
 from pydantic import ValidationError
 from docx import Document
@@ -9,6 +10,7 @@ from docx.enum.text import WD_LINE_SPACING, WD_ALIGN_PARAGRAPH
 
 from models import SessionReport, SessionMetadata
 from sections import add_header, add_summary, add_details, add_next_steps, add_footer
+from startup import preflight
 
 # Initialize OpenAI client for LM Studio
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
@@ -39,7 +41,7 @@ def build_system_prompt() -> str:
     )
 
 
-def get_session_data() -> SessionReport | None:
+def get_session_data(model_id: str = "local-model") -> SessionReport | None:
     """Reads session data, queries LLM, and returns a validated SessionReport."""
 
     if not os.path.exists("session_data.txt"):
@@ -52,17 +54,27 @@ def get_session_data() -> SessionReport | None:
 
     print("--- Sending data to Local LLM ---")
 
+    start_time = time.time()
     completion = client.chat.completions.create(
-        model="local-model",
+        model=model_id,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": session_data}
         ],
         temperature=0.2,
     )
+    end_time = time.time()
+
+    elapsed_time = end_time - start_time
+    usage = completion.usage
+    input_tokens = usage.prompt_tokens if usage else 0
+    output_tokens = usage.completion_tokens if usage else 0
+    total_tokens = usage.total_tokens if usage else 0
+
+    print("--- LLM Response Received ---")
+    print(f"Time taken: {elapsed_time:.2f}s | Tokens: {total_tokens} (In: {input_tokens}, Out: {output_tokens})")
 
     response_content = completion.choices[0].message.content
-    print("--- LLM Response Received ---")
 
     # Strip markdown code blocks if present
     response_content = response_content.replace('```json', '').replace('```', '').strip()
@@ -171,6 +183,7 @@ def create_word_doc(report: SessionReport):
 
 
 if __name__ == "__main__":
-    report = get_session_data()
+    model_id = preflight()
+    report = get_session_data(model_id)
     if report:
         create_word_doc(report)
