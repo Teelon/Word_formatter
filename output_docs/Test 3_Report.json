@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "patient_name": "Thorne, Alexander",
+    "dob": "N/A",
+    "session_date": "2026-03-20",
+    "session_time": "15:30",
+    "session_type": "Comprehensive Background History Interview"
+  },
+  "summary_intro": "Patient presents with a complex, multi-decade history of neurodevelopmental symptoms, multiple misdiagnoses, and chronic employment instability. Early Medical and Surgical History includes premature birth at 34 weeks and emergency surgery for a ruptured appendix at age 9.",
+  "summary_sections": [
+    {
+      "heading": "Current Health and Core Symptoms",
+      "content": "Chronic gastrointestinal distress and completely inverted sleep schedule, rarely falling asleep before 4:00 AM."
+    },
+    {
+      "heading": "Academic and Behavioral History",
+      "content": "Struggled significantly in middle school, frequently missing homework assignments and failing to bring textbooks. Placed in remedial math classes despite advanced aptitude for reading and language comprehension. Received a week-long suspension for impulsively pulling a fire alarm on a dare."
+    },
+    {
+      "heading": "Employment History",
+      "content": "Held approximately 14 different jobs across retail, food service, and tech sectors. Longest position lasted eight months due to boredom or interpersonal conflicts with management."
+    },
+    {
+      "heading": "Social and Relational History",
+      "content": "Difficulty maintaining long-term friendships; partners express frustration over financial impulsivity and lack of long-term planning. Engaged twice but both relationships ended."
+    },
+    {
+      "heading": "Psychological Testing History",
+      "content": "Partial neuropsychological evaluation at age 21 suggested a mood disorder, but no definitive diagnosis was reached. Attempted cognitive behavioral therapy at age 24 but dropped out after three sessions due to patronizing homework assignments."
+    },
+    {
+      "heading": "Substance Use History",
+      "content": "Reports using caffeine excessively, consuming energy drinks throughout the day to self-medicate for chronic brain fog."
+    }
+  ],
+  "details": [
+    {
+      "heading": "Early Medical and Surgical History",
+      "content": "Born prematurely at 34 weeks and spent three weeks in NICU. Emergency surgery for a ruptured appendix at age 9, resulting in a month-long hospital stay and significant academic disruption."
+    },
+    {
+      "heading": "Academic Performance",
+      "content": "Struggled significantly in middle school, frequently missing homework assignments and failing to bring textbooks. Placed in remedial math classes despite advanced aptitude for reading and language comprehension. Received a week-long suspension for impulsively pulling a fire alarm on a dare."
+    },
+    {
+      "heading": "Employment Stability",
+      "content": "Held approximately 14 different jobs across retail, food service, and tech sectors. Longest position lasted eight months due to boredom or interpersonal conflicts with management."
+    },
+    {
+      "heading": "Social Interactions",
+      "content": "Difficulty maintaining long-term friendships; partners express frustration over financial impulsivity and lack of long-term planning. Engaged twice but both relationships ended."
+    },
+    {
+      "heading": "Psychological Evaluation",
+      "content": "Partial neuropsychological evaluation at age 21 suggested a mood disorder, but no definitive diagnosis was reached. Attempted cognitive behavioral therapy at age 24 but dropped out after three sessions due to patronizing homework assignments."
+    },
+    {
+      "heading": "Substance Use",
+      "content": "Reports using caffeine excessively, consuming energy drinks throughout the day to self-medicate for chronic brain fog."
+    }
+  ],
+  "next_steps": [
+    "Full, multi-hour neuropsychological battery will be scheduled for next month.",
+    "Request release forms to speak with previous therapist to obtain records from age 21 neuropsychological evaluation.",
+    "Begin tracking caffeine intake and sleep hours in a dedicated journal app before any pharmacological interventions are discussed."
+  ]
+}

@@ -28,6 +28,18 @@ class SessionMetadata(BaseModel):
     )
 
 
+class SummaryItem(BaseModel):
+    """A sub-section within the summary, with a bold heading and body text."""
+    heading: str = Field(
+        ...,
+        description="Bold sub-header name for this summary sub-section"
+    )
+    content: str = Field(
+        ...,
+        description="The paragraph text for this summary sub-section"
+    )
+
+
 class DetailItem(BaseModel):
     """A single detail bullet point with a bold heading and body text."""
     heading: str = Field(
@@ -43,9 +55,13 @@ class DetailItem(BaseModel):
 class SessionReport(BaseModel):
     """Complete structured output from the LLM for a clinical session."""
     metadata: SessionMetadata
-    summary: str = Field(
+    summary_intro: str = Field(
         ...,
-        description="The full summary text block"
+        description="The opening summary paragraph (before any sub-sections)"
+    )
+    summary_sections: list[SummaryItem] = Field(
+        default_factory=list,
+        description="List of summary sub-sections, each with a heading and content"
     )
     details: list[DetailItem] = Field(
         default_factory=list,
@@ -55,3 +71,4 @@ class SessionReport(BaseModel):
         default_factory=list,
         description="List of suggested next steps"
     )
+

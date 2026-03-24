@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "patient_name": "Robert Miller",
+    "dob": "N/A",
+    "session_date": "March 20, 2026",
+    "session_time": "10:00am",
+    "session_type": "Follow-up Assessment Interview"
+  },
+  "summary_intro": "Patient Robert Miller is here for a follow-up assessment interview.",
+  "summary_sections": [
+    {
+      "heading": "Patient Reports Ongoing Challenges",
+      "content": "Robert reports ongoing challenges with sleep hygiene and minor difficulties maintaining focus during afternoon work hours."
+    }
+  ],
+  "details": [
+    {
+      "heading": "Current Health and Core Symptoms",
+      "content": "Morning productivity has improved, but Robert experiences significant cognitive fatigue after 2:00 PM. He wakes up frequently between 3:00 AM and 5:00 AM and struggles to return to sleep."
+    },
+    {
+      "heading": "Medication Management",
+      "content": "Robert is currently prescribed 15mg of a generic stimulant, taken daily at 8:00 AM. He reports no adverse cardiovascular side effects but has noticed a slight decrease in appetite during lunch."
+    },
+    {
+      "heading": "Workplace Environment",
+      "content": "He recently transitioned to a hybrid work model, spending three days in an open-plan office. The ambient noise is distracting and he started wearing noise-canceling headphones to cope."
+    },
+    {
+      "heading": "Personal Life",
+      "content": "Robert mentioned recent mild stress regarding an upcoming cross-country move scheduled for next month."
+    }
+  ],
+  "next_steps": [
+    "Begin a trial of taking his medication slightly later in the morning to extend its efficacy into the afternoon.",
+    "Keep a sleep diary for the next two weeks to identify any specific nighttime awakenings.",
+    "Schedule a follow-up virtual appointment for April 14, 2026."
+  ]
+}

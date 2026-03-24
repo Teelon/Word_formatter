@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "patient_name": "Doe, Jane",
+    "dob": "February 15th, 1997",
+    "session_date": "March 14, 2026",
+    "session_time": "3:30pm",
+    "session_type": "Structured Background History Interview"
+  },
+  "summary_intro": "The patient's history revealed complex childhood medical issues, anxiety diagnosis, and symptoms suggestive of attention-deficit/hyperactivity disorder.",
+  "summary_sections": [
+    {
+      "heading": "Early Medical and Surgical History",
+      "content": "Patient had a complicated birth requiring an incubator and NICU time due to being underweight and jaundiced. Between ages 5 and 9, the patient experienced several injuries and 2 major surgeries: 1 for appendicitis and 1 for a broken nose."
+    },
+    {
+      "heading": "Current Health and Core Symptoms",
+      "content": "The patient reports current good physical health but is struggling with weight gain impacting mental health, along with long-standing gut and sleep issues for 25 years. The patient exhibits several symptoms of inattentiveness and hyperactivity, including zoning out, restlessness, fidgeting, and talking a lot."
+    },
+    {
+      "heading": "Anxiety and Trauma Diagnosis",
+      "content": "The patient was diagnosed with generalized anxiety in 2024 and had panic attacks, stopping prescribed medication abruptly. They are currently in talk therapy for childhood trauma, which they suspect may be complex PTSD."
+    }
+  ],
+  "details": [
+    {
+      "heading": "Family and Birth History",
+      "content": "Jane Doe has one younger brother who is four years their junior, and they were born into their family. Their mother was 29 and their father was 33 when they were born, and the pregnancy was not complicated. The birth was a vaginal delivery, which occurred two weeks earlier than the expected due date of February 15th."
+    },
+    {
+      "heading": "Early Childhood Medical Concerns",
+      "content": "The birth was reportedly easy, but Jane Doe was underweight and had to be placed in an incubator, which led to a longer hospital stay. They also had jaundice and were possibly separated from their mother and taken to the Neonatal Intensive Care Unit (NICU) for a few days. After discharge, there were no further complications, and the subsequent checkups were routine."
+    },
+    {
+      "heading": "Medical and Surgical History (Childhood)",
+      "content": "They reported having multiple medical incidents between the ages of one and ten, including several surgeries. When they were approximately five or six, they sustained a head injury that required two to three sutures but did not result in a loss of consciousness. They had an appendicitis surgery in second grade (around age seven to nine) that required a three-week hospital stay and two months of being bedridden."
+    },
+    {
+      "heading": "Surgical and Injury History (Later Childhood)",
+      "content": "Around age seven or eight, they had a major nose surgery due to a fall where the skin and bone in their nose were broken. Overall, they have had two major surgeries: one for appendicitis and one for the nose injury, in addition to the head injury. Aside from these injuries, they reported not having any other major illnesses."
+    },
+    {
+      "heading": "Current Health Status and Mental Health",
+      "content": "Jane Doe currently considers themself to be in good physical health, reporting no ailments, but they feel they have gained a lot of weight. They noted that the weight gain is challenging their mental health. They are right-handed and reported no challenges with coordination, clumsiness, or fine motor skills."
+    },
+    {
+      "heading": "Developmental History (Sleep and Gut Issues)",
+      "content": "Jane Doe reported early developmental milestones, such as speaking early. They have historically struggled with sleep, often being awake at night and sleeping more in the mornings, which has been an ongoing struggle for the past 25 years. They also reported long-standing gut issues since childhood, including frequent constipation."
+    },
+    {
+      "heading": "Symptoms of Inattentiveness",
+      "content": "They have been experiencing symptoms suggesting inattentive or hyperactive behaviors and struggle to focus on one activity and complete tasks. They occasionally zone out when spoken to, but they do not frequently lose things. They recalled being easily distracted as a child, getting off track when given instructions, and not caring much in school because they found it hard to understand the material."
+    },
+    {
+      "heading": "Symptoms of Hyperactivity",
+      "content": "Jane Doe often felt restless and was characterized as 'constantly on the go' as a child, which their parents found difficult to control. They currently find themself to be fidgety, particularly with their fingers, and they talk a lot. As a child, they had difficulty waiting in line or waiting their turn, and they would interrupt people."
+    },
+    {
+      "heading": "Current and Past Mental Health Diagnoses",
+      "content": "They were diagnosed with generalized anxiety in 2024, at the age of 25, and reported having panic attacks. They were prescribed two medications for anxiety: Zolpra and Calmox, though they stopped taking them abruptly, which was a 'disaster'. They are currently participating in talk therapy, which initially focused on coping with a breakup but later shifted to addressing childhood trauma."
+    },
+    {
+      "heading": "Education and Professional History",
+      "content": "Jane Doe completed a Master of Engineering Management degree at Western State University from 2021 to 2022. They were frequently late for the school bus during their academic years, though they were fortunate not to change schools. They reported challenges with both reading and mathematics until high school but did not receive any specialized curriculum or accommodations during school or university."
+    },
+    {
+      "heading": "Employment and Relocation",
+      "content": "They are currently unemployed after recently moving to Vancouver in September 2025. Since age 22, they have held three positions across three different companies, with the longest tenure being two years and the shortest being two months. They have not received any workplace accommodations for their struggles."
+    },
+    {
+      "heading": "Family Structure and Residence History",
+      "content": "Jane Doe was born in Lahore, Pakistan, but grew up in a different city. They lived with their biological parents and sibling until age 22, maintaining the same family structure. In childhood, they moved houses three times within the same general environment by age eight. In adulthood, they have moved countries three times (Country A, Country B, Country C) and multiple houses, estimating a total of seven moves, all of which were challenging for them."
+    },
+    {
+      "heading": "Trauma and Language",
+      "content": "They have experienced significant stress throughout their childhood, adolescence, and adulthood, including childhood trauma which they suspect might be complex Post-Traumatic Stress Disorder (PTSD). This trauma has negatively impacted their relationships and mental health. English was their first language, and at home, they also speak Mandarin, German, and Arabic."
+    },
+    {
+      "heading": "Family Mental Health History",
+      "content": "Their mother was diagnosed with schizophrenia and depression, experiencing severe mental health issues over the last seven years, particularly since menopause. Jane Doe does not find their mother's diagnosis relatable but suspects their father may have symptoms of attention-deficit/hyperactivity disorder (ADHD), noting that they are restless and exhibit many ADHD symptoms."
+    }
+  ],
+  "next_steps": [
+    "Jane Doe will send an email to clinician shared if anything is left out or needs to be run back through regarding the assessment.",
+    "The clinician confirmed the next session will be an in-person assessment on Tuesday at 1:00 p.m. The assessment will focus on attention and will take place in a quiet room with a computer, expected to last less than an hour."
+  ]
+}
