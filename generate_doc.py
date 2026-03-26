@@ -48,7 +48,12 @@ SYSTEM_PROMPT = """You are a clinical scribe. Extract ALL information from the s
   "next_steps": ["Each suggested next step as a separate string"]
 }
 
-CRITICAL: The summary must have a short intro paragraph AND multiple sub-sections with headings. Capture EVERY detail sub-section and EVERY next step. Do NOT skip any. Output ONLY the JSON object."""
+RULES — follow every one or your output is invalid:
+1. Every object in "summary_sections" and "details" MUST have BOTH "heading" AND "content" keys.
+2. The "content" value must be a non-empty string with complete sentences extracted from the notes.
+3. Do NOT produce an object that only has a "heading" key with no "content" key.
+4. Do NOT omit any section from the source document.
+5. Output ONLY the JSON object — no markdown fences, no comments, no extra text."""
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
@@ -124,6 +129,9 @@ def process_file(file_path: str, client: OpenAI, model_id: str) -> SessionReport
     try:
         data = json.loads(raw)
         report = SessionReport.model_validate(data)
+        empty_sections = [s.heading for s in report.summary_sections + report.details if not s.content.strip()]
+        if empty_sections:
+            log(f"Warning: {len(empty_sections)} section(s) have empty content: {empty_sections[:3]}{'...' if len(empty_sections) > 3 else ''}", "error")
         log(f"Parsed: {len(report.summary_sections)} summary sections, "
             f"{len(report.details)} detail sections, "
             f"{len(report.next_steps)} next steps", "success")

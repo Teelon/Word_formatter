@@ -1,0 +1,24 @@
+# Gabby Project Gitignore
+
+# Project folders to ignore
+input_docs/
+output_docs/
+processed_docs/
+
+# Python ignore patterns
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# MacOS folders to ignore
+.DS_Store
+
+# IDE folders to ignore
+.vscode/
+.idea/
+.gemini/

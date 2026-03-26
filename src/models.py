@@ -35,7 +35,7 @@ class SummaryItem(BaseModel):
         description="Bold sub-header name for this summary sub-section"
     )
     content: str = Field(
-        ...,
+        default="",
         description="The paragraph text for this summary sub-section"
     )
 
@@ -47,7 +47,7 @@ class DetailItem(BaseModel):
         description="Bold sub-header name for this detail"
     )
     content: str = Field(
-        ...,
+        default="",
         description="The paragraph text for this detail"
     )
 
