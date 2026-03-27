@@ -51,9 +51,10 @@ SYSTEM_PROMPT = """You are a clinical scribe. Extract ALL information from the s
 RULES — follow every one or your output is invalid:
 1. Every object in "summary_sections" and "details" MUST have BOTH "heading" AND "content" keys.
 2. The "content" value must be a non-empty string with complete sentences extracted from the notes.
-3. Do NOT produce an object that only has a "heading" key with no "content" key.
-4. Do NOT omit any section from the source document.
-5. Output ONLY the JSON object — no markdown fences, no comments, no extra text."""
+3. STRICT EXTRACT ONLY: Do NOT add any new information, interpretations, or assumptions. Extract ONLY what is explicitly stated in the text.
+4. STRICT NO OMISSION: Do NOT remove, omit, or summarize away any information, sections, or details from the source document.
+5. Do NOT produce an object that only has a "heading" key with no "content" key.
+6. Output ONLY the JSON object — no markdown fences, no comments, no extra text."""
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
@@ -164,9 +165,9 @@ def generate_output(report: SessionReport, output_dir: str, source_filename: str
     log(f"Report saved in {fmt_time(doc_time)}: {os.path.basename(docx_output)}", "success")
 
     # Save JSON alongside
-    with open(json_output, "w") as f:
-        json.dump(report.model_dump(), f, indent=2)
-    log(f"JSON saved: {os.path.basename(json_output)}", "dim")
+    # with open(json_output, "w") as f:
+    #     json.dump(report.model_dump(), f, indent=2)
+    # log(f"JSON saved: {os.path.basename(json_output)}", "dim")
 
 
 # ── Main Batch Pipeline ─────────────────────────────────────────────────
