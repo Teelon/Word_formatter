@@ -1,6 +1,17 @@
 import os
 import glob
-from docx2pdf import convert
+import subprocess
+import sys
+
+def install_package(package):
+    print(f"Installing {package}...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+try:
+    from docx2pdf import convert
+except ImportError:
+    install_package("docx2pdf")
+    from docx2pdf import convert
 
 def main():
     # Define directories
