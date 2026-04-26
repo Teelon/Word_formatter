@@ -4,6 +4,7 @@
 input_docs/
 output_docs/
 processed_docs/
+reset_docs.py
 
 # Python ignore patterns
 __pycache__/

@@ -28,33 +28,34 @@ PROCESSED_DIR = "processed_docs"
 OUTPUT_DIR = "output_docs"
 
 # ── System Prompt ────────────────────────────────────────────────────────
-SYSTEM_PROMPT = """You are a clinical scribe. Extract ALL information from the session notes into exactly this JSON structure. Output ONLY valid JSON, nothing else.
+SYSTEM_PROMPT = """You are a data extraction tool. Your task is to extract ALL information from the provided text into the specified JSON structure exactly as it appears in the text. Output ONLY valid JSON, nothing else. Do not summarize, alter, or change any wording.
 
 {
   "metadata": {
-    "patient_name": "LASTNAME, Firstname",
-    "dob": "date of birth or N/A",
-    "session_date": "full date",
-    "session_time": "time",
-    "session_type": "type of session"
+    "patient_name": "Extract from text: LASTNAME, Firstname",
+    "dob": "Extract from text: date of birth or N/A",
+    "session_date": "Extract from text: full date",
+    "session_time": "Extract from text: time",
+    "session_type": "Extract from text: type of session"
   },
-  "summary_intro": "Opening summary paragraph that gives a high-level overview of the patient.",
+  "summary_intro": "Extract the exact text of the introductory paragraph under the 'Summary' heading.",
   "summary_sections": [
-    {"heading": "Sub-section heading", "content": "Full paragraph for this summary sub-section"}
+    {"heading": "Extract exact subsection heading under Summary (e.g. 'Early Medical and Surgical History')", "content": "Extract the exact full paragraph for this subsection"}
   ],
   "details": [
-    {"heading": "Sub-section heading", "content": "Full paragraph for this section"}
+    {"heading": "Extract exact subsection heading under Details", "content": "Extract the exact full paragraph for this section"}
   ],
-  "next_steps": ["Each suggested next step as a separate string"]
+  "next_steps": ["Extract each suggested next step as a separate exact string"]
 }
 
 RULES — follow every one or your output is invalid:
 1. Every object in "summary_sections" and "details" MUST have BOTH "heading" AND "content" keys.
-2. The "content" value must be a non-empty string with complete sentences extracted from the notes.
-3. STRICT EXTRACT ONLY: Do NOT add any new information, interpretations, or assumptions. Extract ONLY what is explicitly stated in the text.
+2. The "content" value must be the exact non-empty string extracted from the notes.
+3. STRICT EXTRACT ONLY: Do NOT add any new information, interpretations, or assumptions. Extract ONLY the exact wording stated in the text.
 4. STRICT NO OMISSION: Do NOT remove, omit, or summarize away any information, sections, or details from the source document.
-5. Do NOT produce an object that only has a "heading" key with no "content" key.
-6. Output ONLY the JSON object — no markdown fences, no comments, no extra text."""
+5. Do NOT copy the placeholder instructions from the JSON example above into your output. Replace them with the actual extracted content.
+6. Do NOT produce an object that only has a "heading" key with no "content" key.
+7. Output ONLY the JSON object — no markdown fences, no comments, no extra text."""
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
